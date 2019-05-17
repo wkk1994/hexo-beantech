@@ -1,0 +1,1 @@
+# hexo-beantech
