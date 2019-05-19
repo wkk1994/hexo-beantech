@@ -59,17 +59,13 @@ layout: layout
                 <% } %>
                 <!-- share Share end share分享-->
 
-                <!-- 多说评论框 start -->
-                <% if(config['duoshuo_username']) { %>
-                    <div class="comment">
-                        <div class="ds-thread"
-                            data-thread-key="<%= page.path %>"
-                            data-title="<%= page.title %>"
-                            data-url="<%= page.permalink %>" >
-                        </div>
+                <!-- 来比力评论框 start -->
+                <% if(theme.livere_uid){ %>
+                    <div class="comments" id="comments">
+                        <div id="lv-container" data-id="city" data-uid="<%= theme.livere_uid %>"></div>
                     </div>
                 <% } %>
-                <!-- 多说评论框 end -->
+                <!-- 来比力评论框 end -->
 
                 <!-- disqus comment start -->
                 <% if(config['disqus_username']) { %>
@@ -176,3 +172,7 @@ layout: layout
     }
 </style>
 <% } %>
+
+<!-- 评论框 start -->
+<%- partial('_partial/comments') %>
+<!-- 评论框 end -->
