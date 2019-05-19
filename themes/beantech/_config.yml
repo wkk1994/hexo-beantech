@@ -47,3 +47,18 @@ ba_track_id: 8e2cdaa26ea70e7fedbdbafd3c8d9c84
 # Google Analytics
 #ga_track_id: 'UA-XXXXXXXX-X'          # Format: UA-xxxxxx-xx
 #ga_domain: yoursite
+
+# Show number of visitors to each article. 阅读数配置
+# You can visit https://leancloud.cn to get AppID and AppKey.
+leancloud_visitors:
+  enable: true
+  app_id: 6eLbTrCEFzVG3fC34POHg4i0-gzGzoHsz #<app_id>
+  app_key: m81IH9iicdwjYMLcH62Dm6q3 #<app_key>
+  betterPerformance: true
+valine:
+  enable: false
+  visitor: false # 文章访问量统计
+
+share_share: # share分享
+  enable: true
+

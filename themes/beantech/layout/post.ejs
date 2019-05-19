@@ -32,7 +32,10 @@ layout: layout
                     <% } %>
                 </ul>
 
-                <!-- duoshuo Share start -->
+                <!-- share Share start share分享-->
+                <% if(theme.share_share && theme.share_share.enable) { %>
+                <div class="social-share share-component" style="margin-top:30px" data-wechat-qrcode-helper="" align="center"></div>
+                <% } %>
                 <% if(config['duoshuo_share'] && config['duoshuo_username']) { %>
                     <div class="ds-share"
                         style="text-align: right"
@@ -54,7 +57,7 @@ layout: layout
                     <hr>
                     </div>
                 <% } %>
-                <!-- 多说 Share end-->
+                <!-- share Share end share分享-->
 
                 <!-- 多说评论框 start -->
                 <% if(config['duoshuo_username']) { %>
@@ -114,25 +117,10 @@ layout: layout
         </div>
     </div>
 </article>
-
-<% if(config['duoshuo_username']) { %>
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User by Hux
-    var _user = '<%= config['duoshuo_username'] %>';
-
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
+<!-- share分享js -->
+<% if(theme.share_share && theme.share_share.enable) { %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>           
 <% } %>
 
 <% if(config['disqus_username']) { %>
