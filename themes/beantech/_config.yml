@@ -8,7 +8,7 @@ highlight_theme: night
 
 # Sidebar settings 侧边栏头像设置
 sidebar: true                       # whether or not using Sidebar.
-sidebar-about-description: "Hi, i'm John Doe"
+sidebar-about-description: "Study, Study, Study  ..."
 sidebar-avatar: images/head.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 # 侧边栏小部件显示
 widgets:
@@ -29,16 +29,16 @@ github_username:    wkk1994
 #linkedin_username:  wkk1994
 
 ## Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+featured-tags: false                     # whether or not using Feature-Tags
+featured-condition-size: 10              # A tag will be featured if the size of it is more than this condition value
 
 # Site settings
 SEOTitle: wkk1994 | Blog
 email: beantech@gmail.com
 description: ""
 keyword: ""
-header-img: img/header_img/home-bg-2-dark.png
-signature: true #show signature
+header-img: images/home.jpg
+signature: false #show signature 签名设置
 signature-img: img/signature/BeanTechSign-white.png 
 
 # Analytics settings 统计设置
@@ -63,3 +63,4 @@ share_share: # share分享
   enable: true
 
 livere_uid: MTAyMC80NDI5Ny8yMDgyOQ== #来比力评论
+home_posts_tag: true #首页显示标签

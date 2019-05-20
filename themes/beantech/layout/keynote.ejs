@@ -60,7 +60,7 @@ layout: layout
 
                 <hr>
 
-                <% if(config['duoshuo_share'] && config['duoshuo_username']) { %>
+                <% if(anchorjs['duoshuo_share'] && anchorjs['duoshuo_username']) { %>
                 <!-- 多说 Share start -->
                 </style>
                 <div class="ds-share"
@@ -128,10 +128,10 @@ layout: layout
                 sidebar-container">
 
                 <!-- Featured Tags -->
-                <% if(config['featured-tags']) { %>
+                <% if(theme['featured-tags']) { %>
                 <section>
                     <!-- no hr -->
-                    <h5><a href="<%= config.root %>tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="<%= config.root %>tags/"><%= __('featured_tags') %></a></h5>
                     <div class="tags">
                         <%- list_tags({style: '', class: '', show_count: false, separator: ''}) %>
                     </div>
@@ -139,12 +139,12 @@ layout: layout
                 <% }%>
 
                 <!-- Friends Blog -->
-                <% if(config.friends) { %>
+                <% if(theme.friends) { %>
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
 
-                    <% config.friends.forEach(function(friend){ %>
+                    <% theme.friends.forEach(function(friend){ %>
                         <li><a href="<%= friend.href %>"><%= friend.title %></a></li>
                     <% }); %>
                 </ul>
@@ -155,11 +155,11 @@ layout: layout
     </div>
 </article>
 
-<% if(config['duoshuo_username']) { %>
+<% if(theme['duoshuo_username']) { %>
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     // dynamic User by Hux
-    var _user = '<%= config['duoshuo_username'] %>';
+    var _user = '<%= theme['duoshuo_username'] %>';
 
     // duoshuo comment query.
     var duoshuoQuery = {short_name: _user };
@@ -175,11 +175,11 @@ layout: layout
 <!-- 多说公共JS代码 end -->
 <% } %>
 
-<% if(config['disqus_username']) { %>
+<% if(theme['disqus_username']) { %>
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "<%= config['disqus_username'] %>";
+    var disqus_shortname = "<%= theme['disqus_username'] %>";
     var disqus_identifier = "<%= page.permalink %>";
     var disqus_url = "<%= page.permalink %>";
 
@@ -193,7 +193,7 @@ layout: layout
 <% } %>
 
 
-<% if(config['anchorjs']) { %>
+<% if(theme['anchorjs']) { %>
 <!-- async load function -->
 <script>
     function async(u, c) {
