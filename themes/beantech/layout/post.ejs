@@ -105,7 +105,7 @@ layout: layout
                 <ul class="list-inline">
 
                     <% config.friends.forEach(function(friend){ %>
-                        <li><a href="<%= friend.href %>" target="_blank"><%= friend.title %></a></li>
+                        <li><a href="<%= friend.href %>" target="_blank" rel="external nofollow"><%= friend.title %></a></li>
                     <% }); %>
                 </ul>
                 <% }%>
@@ -176,3 +176,4 @@ layout: layout
 <!-- 评论框 start -->
 <%- partial('_partial/comments') %>
 <!-- 评论框 end -->
+<script type="text/javascript" src="/js/baidu.js"></script>

@@ -39,7 +39,7 @@ layout: layout
                 <ul class="list-inline">
 
                     <% theme.friends.forEach(function(friend){ %>
-                        <li><a href="<%= friend.href %>"><%= friend.title %></a></li>
+                        <li><a href="<%= friend.href %>" rel="external nofollow"><%= friend.title %></a></li>
                     <% }); %>
                 </ul>
                 <% }%>
