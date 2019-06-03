@@ -80,7 +80,6 @@ markdown:
     linkify: true
     typographer: true
     quotes: '“”‘’'
-    markdown:
   plugins:
     - markdown-it-abbr
     - markdown-it-footnote
@@ -91,7 +90,7 @@ markdown:
   anchors:
     level: 2
     collisionSuffix: 'v'
-    permalink: true
+    permalink: false
     permalinkClass: header-anchor
     permalinkSymbol: ¶
 # Extensions
@@ -108,3 +107,5 @@ deploy:
 #sitemap网站地图
 baidusitemap:
   path: baidusitemap.xml
+sitemap:
+  path: sitemap.xml

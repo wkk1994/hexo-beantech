@@ -33,7 +33,7 @@ featured-tags: false                     # whether or not using Feature-Tags
 featured-condition-size: 10              # A tag will be featured if the size of it is more than this condition value
 
 # Site settings
-SEOTitle: wkk1994 | Blog
+SEOTitle: wkk1994
 email: beantech@gmail.com
 description: ""
 keyword: ""
