@@ -9,5 +9,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://www.wkk1994.github.io/sitemap.xml
-Sitemap: http://www.wkk1994.github.io/baidusitemap.xml
+Sitemap: https://www.blog.beyourbest.site/sitemap.xml
+Sitemap: https://www.blog.beyourbest.site/baidusitemap.xml
