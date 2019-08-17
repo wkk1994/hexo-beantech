@@ -3,7 +3,7 @@ title: 从延迟队列开始了解RabbitMQ（RabbbitMQ基础概念）
 date: 2019-07-14 22:03:27
 catalog: true
 subtitle: "rabbitmq入门"
-header-img: "rabbitmq.png"
+header-img: "rabbitmq.jpg"
 tags:
 - rabbitmq
 - 消息队列
@@ -29,7 +29,7 @@ RabbitMQ是一个开源的AMQP协议实现，使用Erlang编写。
 
 虚拟主机：一个虚拟主机持有一组交换机、队列和绑定。虚拟主机的作用在于进行权限管控，rabbitmq默认有一个虚拟主机"/"。
 
-* `rabbitmqctl add_vhost` 添加虚拟主机？？？？？？
+* `rabbitmqctl add_vhost` 添加虚拟主机
 
 ### Queue
 
@@ -107,10 +107,10 @@ public RabbitListenerContainerFactory<?> simpleRabbitListenerContainerFactory(Co
 ```
 
 * channel.basicAck(deliveryTag,multiple) 消息确认，只有执行成功才可以确认，否则消息会丢失
-  * deliveryTag：条消息的唯一标识 ID，是一个单调递增的正整数，delivery tag 的范围仅限于 Channel
-  * multiple：批量确认标志，为true表示一次性确认 deliveryTag 小于等于传入值的所有消息
+    * deliveryTag：条消息的唯一标识 ID，是一个单调递增的正整数，delivery tag 的范围仅限于 Channel
+    * multiple：批量确认标志，为true表示一次性确认 deliveryTag 小于等于传入值的所有消息
 * channel.basicReject(deliveryTag,multiple) 消息确认为死信，消息会被丢弃，不会重回队列
-* channel.basicAck(deliveryTag,multiple,requeue); 拒绝消息，requeue为true会重新进入队列，不会丢弃
+* channel.basicNack(deliveryTag,multiple,requeue); 拒绝消息，requeue为true会重新进入队列，不会丢弃
 
 ### 消息发送确认
 
@@ -119,7 +119,6 @@ public RabbitListenerContainerFactory<?> simpleRabbitListenerContainerFactory(Co
 通过实现 ConfirmCallback 接口，消息发送到 Broker 后触发回调，确认消息是否到达 Broker 服务器，也就是只确认是否正确到达 Exchange 中，连接不上服务器会直接抛出错误不会发送确认
 
 * 开启publisher-confirms
-
 ```yml
 spring:
   rabbitmq:
@@ -164,13 +163,11 @@ spring:
   rabbitmq:
     publisher-returns: true
 ```
-
 或
 
 ```java
 connectionFactory.setPublisherReturns(true);
 ```
-
 * 实现RabbitTemplate.ReturnCallback
 
 ```java
@@ -217,11 +214,10 @@ rabbitTemplate.setReturnCallback(customReturnCallback);
 * topic
 意为主题，将消息路由到与binding key相匹配的routing key的Queue中。这里的匹配是模糊匹配。匹配规则与约定：
 
-  * routing key为一个句点号“. ”分隔的字符串，如stock.usd.nyse，quick.orange.rabbit
-  * binding key与routing key一样也是句点号“. ”分隔的字符串
-  * binding key中可以存在两种特殊字符“*”与“#”，用于做模糊匹配，其中“*”用于匹配一个单词，“#”用于匹配多个单词（可以是零个）
-  * 虽然一个Queue上的多个binding key相匹配，但是只会给这个Queue发送一次消息。
-headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。 在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue
+    * routing key为一个句点号“ . ”分隔的字符串，如stock.usd.nyse，quick.orange.rabbit
+    * binding key与routing key一样也是句点号“ . ”分隔的字符串
+    * binding key中可以存在两种特殊字符“ * ”与“#”，用于做模糊匹配，其中“ * ”用于匹配一个单词，“#”用于匹配多个单词（可以是零个） 
+    * 虽然一个Queue上的多个binding key相匹配，但是只会给这个Queue发送一次消息。
 * headers
 headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。 在绑定Queue与Exchange时指定一组键值对；当消息发送到Exchange时，RabbitMQ会取到该消息的headers（也是一个键值对的形式），对比其中的键值对是否完全匹配Queue与Exchange绑定时指定的键值对；如果完全匹配则消息会路由到该Queue，否则不会路由到该Queue
 
@@ -231,7 +227,7 @@ headers类型的Exchange不依赖于routing key与binding key的匹配规则来�
 
 ### Binding
 
-将Queue与Exchange关联起来，需要指定binding key。这样Exchange会根据routing key与binding key的关系将消息进行路由。
+将Queue与Exchange关联起来，需要指定binding key。这样Exchange会根据routing key与binding key的关系将消息进行路由。（有些类型的交换机不需要指定routing key，如headers）
 
 ### RPC
 
@@ -358,7 +354,8 @@ https://blog.csdn.net/en_joker/article/details/80103519
 #### 使用rabbitmq_delayed_message_exchange插件实现延迟队列（方式二）
 
 [参考](https://blog.csdn.net/liyongbing1122/article/details/81225761)
-优点：可以消息可以指定任意延迟时间，没有上述方式的局限性。
+
+优点：可以消息可以指定任意延迟时间，没有上述方式的局限性。  
 缺点：这个插件是实验性的，认识到其局限性就可以用于生产（github）。我不选择的原因，不能直观查看到当前有多少个延迟消息，exchanage上看不到？？？
 
 **注意：** 这个解决方式有个bug，当使用ReturnCallback时，会一直返回信息NO_ROUTE
@@ -372,7 +369,7 @@ https://blog.csdn.net/en_joker/article/details/80103519
 
 ## 参考资料
 
-* [spring-amqp-rpc](https://github.com/cbwleft/spring-amqp-rpc)
-* [我为什么要选择RabbitMQ ，RabbitMQ简介，各种MQ选型对比](https://www.sojson.com/blog/48.html)
-* [RabbitMQ：消息发送确认 与 消息接收确认（ACK）](https://www.jianshu.com/p/2c5eebfd0e95)
-* [Java 使用RabbitMQ插件实现延时队列](https://blog.csdn.net/liyongbing1122/article/details/81225761)
+- [spring-amqp-rpc](https://github.com/cbwleft/spring-amqp-rpc)
+- [我为什么要选择RabbitMQ ，RabbitMQ简介，各种MQ选型对比](https://www.sojson.com/blog/48.html)
+- [RabbitMQ：消息发送确认 与 消息接收确认（ACK）](https://www.jianshu.com/p/2c5eebfd0e95)
+- [Java 使用RabbitMQ插件实现延时队列](https://blog.csdn.net/liyongbing1122/article/details/81225761)
