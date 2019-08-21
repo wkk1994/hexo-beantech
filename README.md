@@ -21,3 +21,4 @@ theme: beantech
 * 文章访问量统计（参考[next主题](https://theme-next.org/)添加）
 * share分享（原先已有这个功能）
 * 评论功能（原先已有这个功能）
+* 百度链接自动推送
