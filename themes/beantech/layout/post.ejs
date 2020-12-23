@@ -15,70 +15,70 @@ layout: layout
                 post-container">
 
                 <%- page.content %>
-                
+
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     <% if (page.prev){ %>
-                        <li class="previous">
-                            <a href="<%- config.root %><%- page.prev.path %>" data-toggle="tooltip" data-placement="top" title="<%- page.prev.title %>">&larr; <%= __('previous_post') %></a>
-                        </li>
+                    <li class="previous">
+                        <a href="<%- config.root %><%- page.prev.path %>" data-toggle="tooltip" data-placement="top"
+                            title="<%- page.prev.title %>">&larr; <%= __('previous_post') %></a>
+                    </li>
                     <% } %>
                     <% if (page.next){ %>
-                        <li class="next">
-                            <a href="<%- config.root %><%- page.next.path %>" data-toggle="tooltip" data-placement="top" title="<%- page.next.title %>"><%= __('next_post') %>&rarr;</a>
-                        </li>
+                    <li class="next">
+                        <a href="<%- config.root %><%- page.next.path %>" data-toggle="tooltip" data-placement="top"
+                            title="<%- page.next.title %>"><%= __('next_post') %>&rarr;</a>
+                    </li>
                     <% } %>
                 </ul>
 
                 <!-- share Share start share分享-->
                 <% if(theme.share_share && theme.share_share.enable) { %>
-                <div class="social-share share-component" style="margin-top:30px" data-wechat-qrcode-helper="" align="center"></div>
+                <div class="social-share share-component" style="margin-top:30px" data-wechat-qrcode-helper=""
+                    align="center"></div>
                 <% } %>
                 <% if(config['duoshuo_share'] && config['duoshuo_username']) { %>
-                    <div class="ds-share"
-                        style="text-align: right"
-                        data-thread-key="<%= page.path %>"
-                        data-title="<%= page.title %>"
-                        data-url="<%= page.permalink %>"
-                        data-images="<%= page["header-img"] ? page.permalink + page["header-img"] : '' %>"
-                        data-content="<%- truncate(strip_html(page.content), {length: 50, omission: '...'}) %> | <%= theme.SEOTitle %> " >
-                        <div class="ds-share-inline">
-                          <ul  class="ds-share-icons-16">
+                <div class="ds-share" style="text-align: right" data-thread-key="<%= page.path %>"
+                    data-title="<%= page.title %>" data-url="<%= page.permalink %>"
+                    data-images="<%= page["header-img"] ? page.permalink + page["header-img"] : '' %>"
+                    data-content="<%- truncate(strip_html(page.content), {length: 50, omission: '...'}) %> | <%= theme.SEOTitle %> ">
+                    <div class="ds-share-inline">
+                        <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
                             <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
                             <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
                             <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                          </ul>
-                          <div class="ds-share-icons-more">
-                          </div>
+                        </ul>
+                        <div class="ds-share-icons-more">
                         </div>
-                    <hr>
                     </div>
+                    <hr>
+                </div>
                 <% } %>
                 <!-- share Share end share分享-->
 
                 <!-- 来比力评论框 start -->
                 <% if(theme.livere_uid){ %>
-                    <div class="comments" id="comments">
-                        <div id="lv-container" data-id="city" data-uid="<%= theme.livere_uid %>"></div>
-                    </div>
+                <div class="comments" id="comments">
+                    <div id="lv-container" data-id="city" data-uid="<%= theme.livere_uid %>"></div>
+                </div>
                 <% } %>
                 <!-- 来比力评论框 end -->
 
                 <!-- disqus comment start -->
                 <% if(config['disqus_username']) { %>
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
                 <% } %>
                 <!-- disqus comment end -->
             </div>
-            
+
             <!-- Tabe of Content -->
             <%- partial('_partial/toc') %>
-                
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -91,8 +91,9 @@ layout: layout
                     <!-- no hr -->
                     <h5><a href="<%= config.root %>tags/"><%= __('featured_tags') %></a></h5>
                     <div class="tags">
-                       <% page.tags.forEach(function(tag){ %>
-                          <a class="tag" href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+                        <% page.tags.forEach(function(tag){ %>
+                        <a class="tag" href="<%= config.root %>tags/#<%= tag.name %>"
+                            title="<%= tag.name %>"><%= tag.name %></a>
                         <% }) %>
                     </div>
                 </section>
@@ -105,7 +106,8 @@ layout: layout
                 <ul class="list-inline">
 
                     <% config.friends.forEach(function(friend){ %>
-                        <li><a href="<%= friend.href %>" target="_blank" rel="external nofollow"><%= friend.title %></a></li>
+                    <li><a href="<%= friend.href %>" target="_blank" rel="external nofollow"><%= friend.title %></a>
+                    </li>
                     <% }); %>
                 </ul>
                 <% }%>
@@ -116,7 +118,7 @@ layout: layout
 <!-- share分享js -->
 <% if(theme.share_share && theme.share_share.enable) { %>
 <link rel="stylesheet" href="/share/css/share.min.css">
-<script src="/share/js/social-share.min.js"></script>           
+<script src="/share/js/social-share.min.js"></script>
 <% } %>
 
 <% if(config['disqus_username']) { %>
@@ -127,7 +129,7 @@ layout: layout
     var disqus_identifier = "<%= page.permalink %>";
     var disqus_url = "<%= page.permalink %>";
 
-    (function() {
+    (function () {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -141,21 +143,21 @@ layout: layout
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
         anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
+            visible: 'hover',
+            placement: 'left',
+            icon: 'ℬ'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -163,11 +165,11 @@ layout: layout
 <style>
     /* place left on bigger screen */
     @media all and (min-width: 800px) {
-        .anchorjs-link{
+        .anchorjs-link {
             position: absolute;
             left: -0.75em;
             font-size: 1.1em;
-            margin-top : -0.1em;
+            margin-top: -0.1em;
         }
     }
 </style>
@@ -176,3 +178,53 @@ layout: layout
 <!-- 评论框 start -->
 <%- partial('_partial/comments') %>
 <!-- 评论框 end -->
+
+<!-- jQuery -->
+<%- js('js/jquery.min.js') %>
+
+<!-- fancybox start -->
+<% if(theme.fancybox) { %>
+
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+<script src="/lib/fancybox/jquery.fancybox.min.js"></script>
+<script>
+    $(function () {
+        $('img').each(function () {
+            var $image = $(this);
+            var imageCaption = $image.attr('alt');
+            var $imageWrapLink = $image.parent('a');
+
+            if ($imageWrapLink.size() < 1) {
+                var src = this.getAttribute('src');
+                if(src == undefined || src == '' || src == "") {
+                  return;
+                }
+                var idx = src.lastIndexOf('?');
+                if (idx != -1) {
+                    src = src.substring(0, idx);
+                }
+                $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+            }
+
+            $imageWrapLink.attr('data-fancybox', 'images');
+            if (imageCaption) {
+                $imageWrapLink.attr('data-caption', imageCaption);
+            }
+
+        });
+
+        $().fancybox({
+            selector: '[data-fancybox="images"]',
+            thumbs: false,
+            hash: true,
+            loop: false,
+            fullScreen: false,
+            slideShow: false,
+            protect: true,
+        });
+
+    })
+
+</script>
+<% } %>
+<!-- fancybox end -->
