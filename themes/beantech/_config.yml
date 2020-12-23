@@ -66,3 +66,6 @@ livere_uid: MTAyMC80NDI5Ny8yMDgyOQ== #来比力评论
 home_posts_tag: true #首页显示标签
 baidusitemap:
   autoPush: true #百度自动推送
+
+# fancybox图片放大功能
+fancybox: true
